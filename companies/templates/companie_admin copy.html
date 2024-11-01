@@ -1,0 +1,28 @@
+<!-- company_detail.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Empresa</title>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Detalhes da Empresa</h1>
+        
+        <h2>{{ company.name }}</h2>
+        <p><strong>CNPJ:</strong> {{ company.cnpj }}</p>
+        <p><strong>Endereço:</strong> {{ company.street }}, {{ company.number }} {{ company.additional_info }}</p>
+        <p><strong>Bairro:</strong> {{ company.neighborhood }}</p>
+        <p><strong>Cidade:</strong> {{ company.city }}</p>
+        <p><strong>Estado:</strong> {{ company.state }}</p>
+        <p><strong>CEP:</strong> {{ company.zip_code }}</p>
+
+        <div class="buttons">
+            <a href="{% url 'client_list' company.id %}" class="btn">Área de Clientes</a>
+            <a href="{% url 'order_list' company.id %}" class="btn">Área de Pedidos</a>
+        </div>
+    </div>
+</body>
+</html>

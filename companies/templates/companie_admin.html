@@ -1,0 +1,54 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* static/css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>Detalhes da Empresa</h1>
+        
+        <h2>{{ company.name }}</h2>
+        <p><strong>CNPJ:</strong> {{ company.cnpj }}</p>
+        <p><strong>Endereço:</strong> {{ company.street }}, {{ company.number }} {{ company.additional_info }}</p>
+        <p><strong>Bairro:</strong> {{ company.neighborhood }}</p>
+        <p><strong>Cidade:</strong> {{ company.city }}</p>
+        <p><strong>Estado:</strong> {{ company.state }}</p>
+        <p><strong>CEP:</strong> {{ company.zip_code }}</p>
+
+    </div>
+</body>
+</html>
+{% endblock %}

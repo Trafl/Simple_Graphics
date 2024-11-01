@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GraficaFacil{% endblock %}</title>
+</head>
+<style>
+
+
+/* Define que o html e body ocupem 100% da altura da tela */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos do cabeçalho */
+header {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Estilos do contêiner de navegação */
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+}
+
+/* Estilos das listas de navegação */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilos dos itens da lista */
+nav ul li {
+    display: inline-block; /* Muda para inline-block para melhor responsividade */
+    margin-left: 20px;
+}
+
+/* Estilos dos links */
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Efeito de hover nos links */
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos do rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+/* Estilos do contêiner */
+.container {
+    max-width: 1200px; /* Define um max-width para o container */
+    margin: auto; /* Centraliza o contêiner */
+    padding: 0 20px; /* Adiciona um padding lateral */
+}
+
+/* Para que o footer fique sempre na parte inferior da tela quando o conteúdo for pequeno */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto; /* Faz com que o rodapé se mova para baixo */
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    nav .container {
+        flex-direction: column; /* Alinha os itens em coluna em telas pequenas */
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
+
+    nav ul {
+        display: flex; /* Exibe a lista como flexível */
+        flex-direction: column; /* Alinha os itens da lista em coluna */
+        width: 100%; /* Ocupa toda a largura */
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Margem vertical entre os itens da lista */
+    }
+}
+
+@media (max-width: 480px) {
+    nav .container {
+        padding: 10px; /* Reduz o padding em telas pequenas */
+    }
+
+    nav ul li {
+        margin-left: 0; /* Remove margem esquerda para itens da lista */
+        text-align: center; /* Centraliza o texto dos itens */
+    }
+}
+
+
+</style>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1><a href="#">GraficaFacil</a></h1>
+    
+                {% if user.is_authenticated %}
+                <ul>
+                    <li><a href="#">Pedidos</a></li>
+                    <li><a href="#">Clientes</a></li>
+                    <li><a href="#">Sair</a></li>
+                </ul>
+                {% endif %}
+    
+                {% if not user.is_authenticated %}
+                <ul>
+                    <li><a href="#">Cadastro de Cliente</a></li>
+                    <li><a href="#">Cadastro de Empresa</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+    
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; {{ year }} Nome da Aplicação. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
